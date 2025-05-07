@@ -7,5 +7,6 @@ export interface Audio {
     scriptId: mongoose.Schema.Types.ObjectId;
     sceneNumber: number;
     order: number;
+    filePath: string;
     audioUrl: string;
 }

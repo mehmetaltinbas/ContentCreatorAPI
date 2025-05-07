@@ -6,6 +6,7 @@ interface AudioDocument extends mongoose.Document {
     contentId: mongoose.Schema.Types.ObjectId;
     sceneNumber: number;
     order: number;
+    filePath: string;
     audioUrl: string;
 }
 
@@ -15,7 +16,8 @@ const AudioSchema: mongoose.Schema<AudioDocument> = new mongoose.Schema({
     contentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Content', required: true },
     sceneNumber: { type: Number, required: true },
     order: { type: Number },
-    audioUrl: { type: String, required: true },
+    filePath: { type: String },
+    audioUrl: { type: String },
 });
 
 const Audio = mongoose.model('Audio', AudioSchema);

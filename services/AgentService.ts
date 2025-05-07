@@ -51,6 +51,8 @@ const GenerateVideoAsync = errorHandler(
         const audioCreateResponse = await AudioService.CreateAsync(
             scriptCreateResponse.scripts,
             process.env.USER_ID ?? '',
+            contentCreateResponse.content._id as string,
+            contentCreateResponse.content.contentNumber
         );
         if (!audioCreateResponse.audios) return audioCreateResponse;
 

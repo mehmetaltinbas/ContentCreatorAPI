@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import { authMiddleware } from '../middlewares/AuthMiddleware';
 import { RequestExtension } from '../types/RequestExtension';
 import audioService from '../services/AudioService';
+import scriptService from '../services/ScriptService';
 import {
     CreateAudioDto,
     UpdateAudioDto,
@@ -9,6 +10,18 @@ import {
 } from '../types/dtoTypes/AudioDtoTypes';
 
 const router = express.Router();
+
+router.get('/test', async function(req: Request, res: Response) {
+    const contentId = '680aedde905b0749bfadd899';
+    const scriptsResponse = await scriptService.GetAllByContentId(contentId);
+    const result = await audioService.CreateAsync(
+        scriptsResponse.scripts ?? [],
+        process.env.USER_ID ?? '',
+        contentId,
+        1
+    );
+    res.json(result);
+});
 
 router.get('/getbyscript/:scriptId', authMiddleware, async (req: Request, res: Response) => {
     const { scriptId } = req.params;
