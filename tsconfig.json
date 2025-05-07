@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "outDir": "./dist",
+        "rootDir": "./",
+        "resolveJsonModule": true,
+        "sourceMap": true,
+        "baseUrl": ".",
+        "paths": {
+            "dtoTypes/*": ["types/dtoTypes/*"],
+            "entityTypes/*": ["types/entityTypes/*"],
+            "responseTypes/*": ["types/responseTypes/*"]
+        },
+        "typeRoots": ["./node_modules/@types"]
+    },
+    "include": ["./**/*.ts", "eslint.config.mjs", "./types/**/*.ts"],
+    "exclude": ["node_modules", "dist"]
+}
